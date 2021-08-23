@@ -17,6 +17,7 @@ public class RobotMap {
     public static boolean isFirstCamera = true;
     public static boolean isIntakeDown = false;
     public static int cellCount = 3;
+    public static double corection = 1;
 
     // Drive base ports
 

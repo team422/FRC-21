@@ -9,10 +9,10 @@ import frc.robot.userinterface.UserInterface;
 /**
  * Uses joystick values to drive the bot in teleop.
  */
+
 public class MecanumDrive extends CommandBase {
 
-
-    private double xstrafe = UserInterface.driverController.getLeftJoystickX()*1; //1 is a place holder for now we need to find this value by testing because the strafing movements will be slower than the driving movements
+    private double xstrafe = UserInterface.driverController.getLeftJoystickX()*RobotMap.corection; //1 is a place holder for now we need to find this value by testing because the strafing movements will be slower than the driving movements
     private double ystrafe = UserInterface.driverController.getLeftJoystickY();
     private double rot = UserInterface.driverController.getRightJoystickX(); //rotation axis which should be able to be combined with our other stuff
     private double updatedFrontLeftPower = 0;
@@ -76,7 +76,9 @@ public class MecanumDrive extends CommandBase {
         updatedBackRightPower = backrightpower;
 
         Subsystems.driveBase.setMotors(frontleftpower*RobotMap.getSpeedCap(), frontrightpower*RobotMap.getSpeedCap(), backleftpower*RobotMap.getSpeedCap(), backrightpower*RobotMap.getSpeedCap());
-
+        /*
+        This is highly experimental!!! always have your finger on the disable button in case something goes wrong. If there is too much resistant check the values using print statements. If anything feels wrong then disable imediatly
+        */
     }
 
 }
