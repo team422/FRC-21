@@ -137,9 +137,7 @@ public class ShuffleboardControl {
      * Updates data used in Shuffleboard. This will be updated even if the robot is disabled.
      */
     public static void printDataToShuffleboard() {
-        //control panel
-        setSpeedWidget.setDouble(Subsystems.flyboi.wheelSpeed);
-        actualSpeedWidget.setDouble(Subsystems.flyboi.getPower());
+        //
 
         //cell count
         cellCountWidget.setDouble(RobotMap.cellCount);

@@ -176,8 +176,8 @@ public class RobotMap {
             UserInterface.driverController.RB.whenPressed(new SlowFast());
 
             //operator controls (buttons)
-            UserInterface.operatorController.LB.whileHeld(new Vomit());
-            UserInterface.operatorController.RB.whenPressed(new IntakeToggle());
+           /** UserInterface.operatorController.LB.whileHeld(new Vomit());
+            UserInterface.operatorController.RB.whenPressed(new IntakeToggle()); */
 
         }
         else if (controlScheme == ControlScheme.WIIDRIVE){
@@ -189,9 +189,9 @@ public class RobotMap {
             //wiimote controls (buttons)
             UserInterface.wiimoteController.A.whenPressed(new SlowFast());
 
-            //operator controls (buttons)
+            /** //operator controls (buttons)
             UserInterface.operatorController.LB.whileHeld(new Vomit());
-            UserInterface.operatorController.RB.whenPressed(new IntakeToggle());
+            UserInterface.operatorController.RB.whenPressed(new IntakeToggle()); */
         }
     }
 

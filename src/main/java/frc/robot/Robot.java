@@ -60,17 +60,17 @@ public class Robot extends TimedRobot {
     public void teleopPeriodic() {
 
         //X,Y buttons - Climber
-        if (UserInterface.operatorController.getYButton()) {
+    /** if (UserInterface.operatorController.getYButton()) {
             Subsystems.climber.extendClimber(0.5);
         } else if (UserInterface.operatorController.getXButton()) {
             Subsystems.climber.retractClimber(0.5);
         } else {
             Subsystems.climber.stopClimber();
-        }
+        } 
 
 
         // Left joystick - intake & transversal
-        if (UserInterface.operatorController.getRightJoystickY() >= 0.4) {
+     if (UserInterface.operatorController.getRightJoystickY() >= 0.4) {
             Subsystems.intake.setIntakeMotors(0.95);
             Subsystems.transversal.setTransversalMotors(0.8);
         } else if (UserInterface.operatorController.getRightJoystickY() <= -0.4) {
@@ -113,6 +113,6 @@ public class Robot extends TimedRobot {
             Subsystems.cellStop.feedBalls(-0.5);
         } else if (!isRightTriggerOn) {
             Subsystems.cellStop.stopFeed();
-        }
-    }
+        }  */
+    } 
 }
