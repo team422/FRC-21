@@ -15,6 +15,8 @@ public class Robot extends TimedRobot {
     private boolean oldLeftTriggerOn = false;
     private boolean oldRightTriggerOn = false;
 
+    private int tick = 0;
+
     public Robot() {
         super(0.06);
     }
@@ -44,6 +46,10 @@ public class Robot extends TimedRobot {
     public void robotPeriodic() {
         CommandScheduler.getInstance().run();
         ShuffleboardControl.printDataToShuffleboard();
+
+        tick += 1;
+        Subsystems.leeds.animation(tick);
+
     }
 
     public void disabledInit() {

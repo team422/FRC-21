@@ -43,6 +43,11 @@ public class RobotMap {
     public static int intakeExtensionOut;
     public static int intakeExtensionIn;
 
+    // LED related items
+
+    public static int leeds;
+    public static int leedLength;
+
     // Sensor ports 
 
     public enum BotNames {
@@ -100,7 +105,7 @@ public class RobotMap {
 
             intakeExtensionIn = 0;
             intakeExtensionOut = 1;
-        } else if (bot == BotNames.AXIDRIVE){
+        } else if (bot == BotNames.AXIDRIVE) {
             leftMiddleMaster = 1;
             leftFrontFollower = 2;
             leftRearFollower = 3;
@@ -122,31 +127,34 @@ public class RobotMap {
 
             intakeExtensionIn = 0;
             intakeExtensionOut = 1;
-        }else if (bot == BotNames.PBOT20){
-        //jenkyboi tm
-        leftMiddleMaster = 34;
-        leftFrontFollower = 3;
-        leftRearFollower = 6;
-        rightMiddleMaster = 31;
-        rightFrontFollower = 5; 
-        rightRearFollower = 4;
+        } else if (bot == BotNames.PBOT20) {
+            //jenkyboi tm
+            leftMiddleMaster = 34;
+            leftFrontFollower = 3;
+            leftRearFollower = 6;
+            rightMiddleMaster = 31;
+            rightFrontFollower = 5; 
+            rightRearFollower = 4;
 
-        wheelDiameter = 6;
+            wheelDiameter = 6;
 
-        leftFlywheel = 422;
-        rightFlywheel = 422;
-        intakeMotor = 422;
-        bottomBelt = 422;
-        middleBelt = 422;
-        feederWheel = 422;
+            leftFlywheel = 422;
+            rightFlywheel = 422;
+            intakeMotor = 422;
+            bottomBelt = 422;
+            middleBelt = 422;
+            feederWheel = 422;
 
-        leftClimber = 422;
-        rightClimber = 422;
+            leftClimber = 422;
+            rightClimber = 422;
 
-        intakeExtensionIn = 0;
-        intakeExtensionOut = 1;
+            intakeExtensionIn = 0;
+            intakeExtensionOut = 1;
+        }
+
+        leeds = 0;
+        leedLength = 422;
     }
-}
 
     /**
      * @return The speed cap for the drive base in teleop.
