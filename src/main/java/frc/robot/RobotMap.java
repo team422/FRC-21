@@ -7,6 +7,8 @@ public class RobotMap {
 
     // Robot settings & toggles (mutable)
 
+    public static double defaultSpeed = 0.5; //speed used for demo
+
     private static double speedCap = 0.8;
     private static double rotationCap = 0.7;
 
@@ -172,4 +174,7 @@ public class RobotMap {
         rotationCap = (newRotationCap > 1) ? 1 : newRotationCap;
     }
 
+    public static double convertToTicks(double inches) {
+        return (4096 / (wheelDiameter * 3.1415926) * inches);
+    }
 }
