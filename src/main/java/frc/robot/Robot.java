@@ -65,7 +65,6 @@ public class Robot extends TimedRobot {
     }
 
     public void autonomousPeriodic() {
-        System.out.println("is intake down? " + RobotMap.isIntakeDown);
     }
 
     public void teleopInit() { 
