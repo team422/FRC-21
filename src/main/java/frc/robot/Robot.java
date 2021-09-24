@@ -22,7 +22,7 @@ public class Robot extends TimedRobot {
 
     public void robotInit() {
         //Choose from AXIDRIVE (Axiom drivebase), TOASTER, PBOT20 (42D2), and COMPETITION
-        RobotMap.setBot(RobotMap.BotNames.COMPETITION);
+        RobotMap.setBot(RobotMap.BotNames.PBOT20);
         System.out.println("Initializing" + RobotMap.botName);
 
         //drive settings
@@ -59,7 +59,9 @@ public class Robot extends TimedRobot {
         // Schedule autonomous command to run
         // ShuffleboardControl.setAutonomous();
         // ShuffleboardControl.getAutonomous().schedule();
-        new GalacticSearch().schedule();
+        // new GalacticSearch().schedule();
+        new DriveStraight(10, 0.5).schedule();
+        
     }
 
     public void autonomousPeriodic() {
