@@ -60,11 +60,12 @@ public class Robot extends TimedRobot {
         // ShuffleboardControl.setAutonomous();
         // ShuffleboardControl.getAutonomous().schedule();
         // new GalacticSearch().schedule();
-        new DriveStraight(10, 0.5).schedule();
-        
+        // new DriveStraight(50, 0.5).schedule();
+        new Turn(90, 0.5).schedule();
     }
 
     public void autonomousPeriodic() {
+        // System.out.println(Commands.Turn.angle);
     }
 
     public void teleopInit() { 

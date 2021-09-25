@@ -49,6 +49,13 @@ public class Turn extends CommandBase {
 
   public boolean isFinished() {
       double angle = Subsystems.driveBase.getGyroAngle();
+      if (angle > degrees) {
+          return true;
+      }
+      else {
+        return false;
+      }
+      /*
       if (degrees > 0) {
           // Turning to the right
           if (!isCorrecting) {
@@ -67,6 +74,8 @@ public class Turn extends CommandBase {
               return false;
           }
           return (angle > degrees);
+          */
+
       }
-  }
-}
+    }
+  
