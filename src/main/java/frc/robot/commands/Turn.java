@@ -49,12 +49,46 @@ public class Turn extends CommandBase {
 
   public boolean isFinished() {
       double angle = Subsystems.driveBase.getGyroAngle();
+
+      public boolean isFinished() {
+        double angle = Subsystems.driveBase.getGyroAngle();
+  
+        /*
+        if (angle > degrees) {
+            return true;
+        }
+        else {
+          return false;
+        }
+        */
+
+    int step = 0;
+    if ((angle > 0.5 * degrees) && step == 0) {
+        step++;
+        speed *= 2;
+    }
+    else if ((angle > 0.75 * degrees) && step == 1) {
+        step++;
+    }
+    else if ((angle > 0.875 * degrees) && step == 2) {
+        step++;
+    }
+    else if ((angle > 0.9375 * degrees) && step == 3) {
+        step++;
+      }
+      else if ((angle > 0.95 * degrees) && step == 4) {
+          step++;
+      }
+
+      /*
       if (angle > degrees) {
           return true;
       }
       else {
         return false;
       }
+      /*
+
       /*
       if (degrees > 0) {
           // Turning to the right
