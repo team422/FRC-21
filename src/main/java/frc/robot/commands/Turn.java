@@ -48,38 +48,34 @@ public class Turn extends CommandBase {
   }
 
   public boolean isFinished() {
-      double angle = Subsystems.driveBase.getGyroAngle();
-
-      public boolean isFinished() {
-        double angle = Subsystems.driveBase.getGyroAngle();
-  
-        /*
-        if (angle > degrees) {
-            return true;
-        }
-        else {
-          return false;
-        }
-        */
-
-    int step = 0;
-    if ((angle > 0.5 * degrees) && step == 0) {
-        step++;
-        speed *= 2;
+    // New System: Using proprotional speeds
+    double angle = Subsystems.driveBase.getGyroAngle();
+    if (angle > 0.99 * degrees) {
+        return true;
     }
-    else if ((angle > 0.75 * degrees) && step == 1) {
-        step++;
+    else if (angle > 0.95 * degrees) {
+        speed *= 1/32;
+        return false;
     }
-    else if ((angle > 0.875 * degrees) && step == 2) {
-        step++;
+    else if (angle > 0.9375 * degrees) {
+        speed *= 1/16;
+        return false;
     }
-    else if ((angle > 0.9375 * degrees) && step == 3) {
-        step++;
-      }
-      else if ((angle > 0.95 * degrees) && step == 4) {
-          step++;
-      }
+    else if (angle > 0.875 * degrees) {
+        speed *= 1/8;
+        return false;
+    }
+    else if (angle > 0.75 * degrees) {
+        speed *= 1/4;
+        return false;
+    }
+    else if (angle > 0.5 * degrees) {
+        speed *= 1/2;
+        return false;
+    }
+    return false;
 
+    // Implementation 1: No Simple PID
       /*
       if (angle > degrees) {
           return true;
@@ -89,6 +85,7 @@ public class Turn extends CommandBase {
       }
       /*
 
+    // Implementation 2: Sketchy Overcorrection
       /*
       if (degrees > 0) {
           // Turning to the right
