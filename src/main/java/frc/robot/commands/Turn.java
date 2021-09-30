@@ -58,24 +58,31 @@ public class Turn extends CommandBase {
         return false;
       }
       */
-      int step = 0;
-      if ((angle > 0.5 * degrees) && step == 0) {
-        step++;
-        speed *= 2;
-      }
-      else if ((angle > 0.75 * degrees) && step == 1) {
-        step++;
-      }
-      else if ((angle > 0.875 * degrees) && step == 2) {
-        step++;
-      }
-      else if ((angle > 0.9375 * degrees) && step == 3) {
-        step++;
+      if (angle > 0.99 * degrees) {
+        return true;
+        }
+        else if (angle > 0.95 * degrees) {
+            speed *= 1/32;
+            return false;
+        }
+        else if (angle > 0.9375 * degrees) {
+            speed *= 1/16;
+            return false;
+        }
+        else if (angle > 0.875 * degrees) {
+            speed *= 1/8;
+            return false;
+        }
+        else if (angle > 0.75 * degrees) {
+            speed *= 1/4;
+            return false;
+        }
+        else if (angle > 0.5 * degrees) {
+            speed *= 1/2;
+            return false;
+        }
+        return false;
     }
-    else if ((angle > 0.95 * degrees) && step == 4) {
-        step++;
-    }
-
       /*
       if (degrees > 0) {
           // Turning to the right
@@ -98,5 +105,5 @@ public class Turn extends CommandBase {
           */
 
       }
-    }
   
+      
