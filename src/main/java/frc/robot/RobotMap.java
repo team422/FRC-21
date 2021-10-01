@@ -153,7 +153,7 @@ public class RobotMap {
         }
 
         leeds = 0;
-        leedLength = 422;
+        leedLength = 60;
     }
 
     /**

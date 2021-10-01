@@ -31,17 +31,23 @@ public class Leeds extends SubsystemBase {
 
     public void animation(int tick) {
         for (int i = 0; i < leedBuffer.getLength(); i++) {
-            if (tick % 2 == 0) {
-                if (i % 2 == 0) {
-                    leedBuffer.setRGB(i, 115, 73, 172);
-                } else {
+            if (tick % 3 == 0) {
+                if (i % 3 == 0) {
                     leedBuffer.setRGB(i, 247, 95, 28);
+                } else {
+                    leedBuffer.setRGB(i, 128, 0, 128);
+                }
+            } else if (tick % 3 == 1) {
+                if (i % 3 == 1) {
+                    leedBuffer.setRGB(i, 247, 95, 28);
+                } else {
+                    leedBuffer.setRGB(i, 128, 0, 128);
                 }
             } else {
-                if (i % 2 == 1) {
-                    leedBuffer.setRGB(i, 115, 73, 172);
-                } else {
+                if (i % 3 == 2) {
                     leedBuffer.setRGB(i, 247, 95, 28);
+                } else {
+                    leedBuffer.setRGB(i, 128, 0, 128);
                 }
             }
         }
