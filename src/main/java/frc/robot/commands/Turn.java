@@ -11,6 +11,7 @@ public class Turn extends CommandBase {
 
   private double degrees;
   private double speed;
+  private double original_speed;
   private boolean isCorrecting = false;
 
   /**
@@ -24,6 +25,7 @@ public class Turn extends CommandBase {
         addRequirements(Subsystems.driveBase);
         this.degrees = degrees;
         this.speed = speed;
+        original_speed = speed;
     }
     public void initialize() {
       System.out.println("Starting turn!");
@@ -47,8 +49,24 @@ public class Turn extends CommandBase {
       }
   }
 
+  int CurrentDegree = 0;
+  int LastDegree = 0;
   public boolean isFinished() {
+
       double angle = Subsystems.driveBase.getGyroAngle();
+      CurrentDegree = (int)angle;
+      if (CurrentDegree != LastDegree) {
+        speed = speed * (1-(CurrentDegree/degrees));
+        LastDegree = CurrentDegree;
+        return false;
+      }
+      if (angle > degrees) {
+          System.out.println(angle);
+          return true;
+      }
+      else {
+          return false;
+      }
 
       /*
       if (angle > degrees) {
@@ -58,31 +76,36 @@ public class Turn extends CommandBase {
         return false;
       }
       */
-      if (angle > 0.99 * degrees) {
+      
+      /*
+      int factor = 1;
+      if (angle > factor * 0.90 * degrees) {
         return true;
         }
-        else if (angle > 0.95 * degrees) {
-            speed *= 1/32;
+        else if (angle > factor * 0.8 * degrees) {
+            speed = 1/32 * original_speed;
             return false;
         }
-        else if (angle > 0.9375 * degrees) {
-            speed *= 1/16;
+        else if (angle > factor * 0.7 * degrees) {
+            speed = 1/16 * original_speed;
             return false;
         }
-        else if (angle > 0.875 * degrees) {
-            speed *= 1/8;
-            return false;
-        }
-        else if (angle > 0.75 * degrees) {
-            speed *= 1/4;
+        else if (angle > factor * 0.6 * degrees) {
+            speed = 1/8 * original_speed;
             return false;
         }
         else if (angle > 0.5 * degrees) {
-            speed *= 1/2;
+            speed = 1/4 * original_speed;
+            return false;
+        }
+        else if (angle > factor * 0.5 * degrees) {
+            speed = 1/2 * original_speed;
             return false;
         }
         return false;
     }
+    */
+    
       /*
       if (degrees > 0) {
           // Turning to the right
@@ -104,6 +127,4 @@ public class Turn extends CommandBase {
           return (angle > degrees);
           */
 
-      }
-  
-      
+      }  }
