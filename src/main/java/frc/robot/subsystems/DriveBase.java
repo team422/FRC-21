@@ -42,7 +42,7 @@ public class DriveBase extends SubsystemBase {
             this.leftFrontTalon = new WPI_TalonSRX(RobotMap.leftFront);
             this.leftBackTalon = new WPI_TalonSRX(RobotMap.leftBack);
             this.rightFrontTalon = new WPI_TalonSRX(RobotMap.rightFront);
-            this.rightBackTalon = new WPI_TalonSRX(RobotMap.rightFront);
+            this.rightBackTalon = new WPI_TalonSRX(RobotMap.rightBack);
 
             this.leftFrontGroup = new SpeedControllerGroup(leftFrontTalon);
             this.rightFrontGroup = new SpeedControllerGroup(rightFrontTalon);
@@ -54,16 +54,12 @@ public class DriveBase extends SubsystemBase {
         // this.gyro = new ADIS16470_IMU();
         this.gyro = new ADXRS450_Gyro(kGyroPort);
     }
-    /**
-     * Sets drive train motors.
-     * @param left Left side motors' velocity (-1 to 1)
-     * @param right Right side motors' velocity (-1 to 1)
-     */
     public void setMotors(double frontLeft, double frontRight, double backLeft, double backRight) {
         leftFrontGroup.set(frontLeft);
         rightFrontGroup.set(frontRight);
         leftBackGroup.set(backLeft);
         rightBackGroup.set(backRight);
+        System.out.println(frontRight);
     }
 
     /**

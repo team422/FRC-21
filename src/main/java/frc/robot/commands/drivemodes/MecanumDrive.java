@@ -33,49 +33,55 @@ public class MecanumDrive extends CommandBase {
         double backleftpower;
         double cap = 1;
 
-        if (Math.abs(xstrafe+ystrafe)>1||Math.abs(ystrafe-xstrafe)>1) {
-            cap = 1/(Math.max(Math.abs(xstrafe+ystrafe), Math.abs(ystrafe-xstrafe)));
+        xstrafe = UserInterface.driverController.getLeftJoystickX()*RobotMap.corection;
+        ystrafe = UserInterface.driverController.getLeftJoystickY();
+
+        if (Math.abs(xstrafe+UserInterface.driverController.getLeftJoystickY())>1||Math.abs(ystrafe-xstrafe)>1) {
+            cap = 1/(Math.max(Math.abs(xstrafe + ystrafe), Math.abs(ystrafe -xstrafe)));
         }
 
-        frontleftpower = ((ystrafe + xstrafe)*cap)+rot;
+        frontleftpower = -(((ystrafe + xstrafe)*cap)+rot);
         frontrightpower = ((ystrafe - xstrafe)*cap)-rot;
-        backleftpower = ((ystrafe - xstrafe)*cap)+rot;
+        backleftpower = -(((ystrafe - xstrafe)*cap)+rot);
         backrightpower = ((ystrafe + xstrafe)*cap)-rot;
 
-        double frontLeftSpeedDifference = frontleftpower - updatedFrontLeftPower;
-        if (frontLeftSpeedDifference > maxChange) {
-            frontleftpower = updatedFrontLeftPower + maxChange;
-        } else if (frontLeftSpeedDifference < -maxChange) {
-            frontleftpower = updatedFrontLeftPower - maxChange;
-        }
+        // double frontLeftSpeedDifference = frontleftpower - updatedFrontLeftPower;
+        // if (frontLeftSpeedDifference > maxChange) {
+        //     frontleftpower = updatedFrontLeftPower + maxChange;
+        // } else if (frontLeftSpeedDifference < -maxChange) {
+        //     frontleftpower = updatedFrontLeftPower - maxChange;
+        // }
         
-        double frontRightSpeedDifference = frontrightpower - updatedFrontRightPower;
-        if (frontRightSpeedDifference > maxChange) {
-            frontrightpower = updatedFrontRightPower + maxChange;
-        } else if (frontRightSpeedDifference < -maxChange) {
-            frontrightpower = updatedFrontRightPower - maxChange;
-        }
+        // double frontRightSpeedDifference = frontrightpower - updatedFrontRightPower;
+        // if (frontRightSpeedDifference > maxChange) {
+        //     frontrightpower = updatedFrontRightPower + maxChange;
+        // } else if (frontRightSpeedDifference < -maxChange) {
+        //     frontrightpower = updatedFrontRightPower - maxChange;
+        // }
 
-        double backLeftSpeedDifference = backleftpower - updatedFrontLeftPower;
-        if (backLeftSpeedDifference > maxChange) {
-            backleftpower = updatedBackLeftPower + maxChange;
-        } else if (backLeftSpeedDifference < -maxChange) {
-            backleftpower = updatedBackLeftPower - maxChange;
-        }
+        // double backLeftSpeedDifference = backleftpower - updatedFrontLeftPower;
+        // if (backLeftSpeedDifference > maxChange) {
+        //     backleftpower = updatedBackLeftPower + maxChange;
+        // } else if (backLeftSpeedDifference < -maxChange) {
+        //     backleftpower = updatedBackLeftPower - maxChange;
+        // }
         
-        double backRightSpeedDifference = backrightpower - updatedFrontRightPower;
-        if (backRightSpeedDifference > maxChange) {
-            backrightpower = updatedBackRightPower + maxChange;
-        } else if (backRightSpeedDifference < -maxChange) {
-            backrightpower = updatedBackRightPower - maxChange;
-        }
+        // double backRightSpeedDifference = backrightpower - updatedFrontRightPower;
+        // if (backRightSpeedDifference > maxChange) {
+        //     backrightpower = updatedBackRightPower + maxChange;
+        // } else if (backRightSpeedDifference < -maxChange) {
+        //     backrightpower = updatedBackRightPower - maxChange;
+        // }
 
-        updatedFrontLeftPower = frontleftpower;
-        updatedFrontRightPower = frontrightpower;
-        updatedBackLeftPower = backleftpower;
-        updatedBackRightPower = backrightpower;
+        // updatedFrontLeftPower = frontleftpower;
+        // updatedFrontRightPower = frontrightpower;
+        // updatedBackLeftPower = backleftpower;
+        // updatedBackRightPower = backrightpower;
 
-        Subsystems.driveBase.setMotors(frontleftpower*RobotMap.getSpeedCap(), frontrightpower*RobotMap.getSpeedCap(), backleftpower*RobotMap.getSpeedCap(), backrightpower*RobotMap.getSpeedCap());
+
+
+        // Subsystems.driveBase.setMotors(frontleftpower*RobotMap.getSpeedCap(), frontrightpower*RobotMap.getSpeedCap(), backleftpower*RobotMap.getSpeedCap(), backrightpower*RobotMap.getSpeedCap());
+        Subsystems.driveBase.setMotors(frontleftpower, frontrightpower, backleftpower, backrightpower);
         /*
         This is highly experimental!!! always have your finger on the disable button in case something goes wrong. If there is too much resistant check the values using print statements. If anything feels wrong then disable imediatly
         */

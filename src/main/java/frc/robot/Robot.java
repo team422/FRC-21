@@ -24,9 +24,6 @@ public class Robot extends TimedRobot {
         //Choose from ControllerTank, ControllerTankFO (Field Oriented extras), JoystickTank, ControllerSplitArcade, ControllerSplitCurvature, and Wii
         UIMap.setDriveMode(UIMap.DriveMode.MecanumDrive);
         System.out.println("Initializing" + UIMap.driveMode);
-
-        //drive settings
-        Subsystems.driveBase.cheesyDrive.setSafetyEnabled(false);
     
         ShuffleboardControl.layoutShuffleboard();
     }
