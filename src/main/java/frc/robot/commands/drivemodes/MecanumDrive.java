@@ -35,6 +35,7 @@ public class MecanumDrive extends CommandBase {
 
         xstrafe = UserInterface.driverController.getLeftJoystickX()*RobotMap.corection;
         ystrafe = UserInterface.driverController.getLeftJoystickY();
+        rot = UserInterface.driverController.getRightJoystickX();
 
         if (Math.abs(xstrafe+UserInterface.driverController.getLeftJoystickY())>1||Math.abs(ystrafe-xstrafe)>1) {
             cap = 1/(Math.max(Math.abs(xstrafe + ystrafe), Math.abs(ystrafe -xstrafe)));
