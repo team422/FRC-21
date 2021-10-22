@@ -55,9 +55,9 @@ public class DriveBase extends SubsystemBase {
         this.gyro = new ADXRS450_Gyro(kGyroPort);
     }
     public void setMotors(double frontLeft, double frontRight, double backLeft, double backRight) {
-        leftFrontGroup.set(frontLeft);
+        leftFrontGroup.set(-frontLeft);
         rightFrontGroup.set(frontRight);
-        leftBackGroup.set(backLeft);
+        leftBackGroup.set(-backLeft);
         rightBackGroup.set(backRight);
         System.out.println(frontRight);
     }
