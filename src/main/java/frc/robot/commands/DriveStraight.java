@@ -3,11 +3,15 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotMap;
 import frc.robot.subsystems.*;
+import edu.wpi.first.wpilibj.controller.PIDController;
 
 /**
  * uses adjustments to make the robot drive straight without deviation
  */
 
+// Link: https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controllers/pidcontroller.html#constructing-a-pidcontroller
+//  example: https://docs.wpilib.org/en/stable/docs/software/commandbased/pid-subsystems-commands.html#pid-control-through-pidsubsystems-and-pidcommands
+// https://docs.wpilib.org/en/stable/docs/software/commandbased/pid-subsystems-commands.html#pid-control-through-pidsubsystems-and-pidcommands
 public class DriveStraight extends CommandBase {
     private double ticks;
     private boolean forward;
@@ -21,6 +25,8 @@ public class DriveStraight extends CommandBase {
             this.forward = true;
         }
         this.speed = speed;
+        // double kP, kI, kD;
+        // PIDController our_pid = new PIDController(kP, kI, kD);
     }
 
     public void initialize(){

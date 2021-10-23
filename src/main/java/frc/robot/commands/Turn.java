@@ -1,17 +1,23 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.PIDCommand;
 import frc.robot.RobotMap;
 import frc.robot.subsystems.*;
+import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj.controller.PIDController;
 
 /**
  * Turns the robot
  */
-public class Turn extends CommandBase {
+public class Turn extends PIDCommand {
 
   private double degrees;
-  private double speed;
-  private double original_speed;
+  // private double speed;
+  static private double kP = 2;
+  static private double kI = 0;
+  static private double kD = 0;
+ // private double original_speed;
   private boolean isCorrecting = false;
 
   /**
@@ -21,18 +27,31 @@ public class Turn extends CommandBase {
    */
 
     public Turn(double degrees, double speed) {
-        setName("Turn");
-        addRequirements(Subsystems.driveBase);
-        this.degrees = degrees;
-        this.speed = speed;
-        original_speed = speed;
-    }
-    public void initialize() {
-      System.out.println("Starting turn!");
-      Subsystems.driveBase.zeroGyroAngle();
-      Subsystems.driveBase.zeroEncoderPosition();
-  }
+        //commandBase.setName("Turn");
+        //addRequirements(Subsystems.driveBase);
+        // this.degrees = degrees;
+        // this.speed = speed;
+        // original_speed = speed;
+        // controller copied from link 3 above from full example
+        super(
+            new PIDController(kP, kI, kD),
+            // Set the final output
+            Subsystems.driveBase::getGyroAngle,
+            degrees,
+            output -> Subsystems.driveBase.setMotors(output,-output),
+            Subsystems.driveBase);
 
+        getController().enableContinuousInput(-180,180);
+        getController()
+            .setTolerance(0.1, 0.1);
+    }
+//     public void initialize() {
+//       System.out.println("Starting turn!");
+//       Subsystems.driveBase.zeroGyroAngle();
+//       Subsystems.driveBase.zeroEncoderPosition();
+//   }
+
+/*
   public void execute() {
       if ((degrees > 0) && !isCorrecting) {
           // Turning to the right
@@ -48,25 +67,28 @@ public class Turn extends CommandBase {
           Subsystems.driveBase.setMotors(-speed / 1.2, speed / 1.2);
       }
   }
+*/
 
-  int CurrentDegree = 0;
-  int LastDegree = 0;
+
+//int CurrentDegree = 0;
+//int LastDegree = 0;
   public boolean isFinished() {
-
-      double angle = Subsystems.driveBase.getGyroAngle();
-      CurrentDegree = (int)angle;
-      if (CurrentDegree != LastDegree) {
-        speed = speed * (1-(CurrentDegree/degrees));
-        LastDegree = CurrentDegree;
-        return false;
-      }
-      if (angle > degrees) {
-          System.out.println(angle);
-          return true;
-      }
-      else {
-          return false;
-      }
+      return getController().atSetpoint();
+    // formula solution for turning
+    //   double angle = Subsystems.driveBase.getGyroAngle();
+    //   CurrentDegree = (int)angle;
+    //   if (CurrentDegree != LastDegree) {
+    //     speed = speed * (1-(CurrentDegree/degrees));
+    //     LastDegree = CurrentDegree;
+    //     return false;
+    //   }
+    //   if (angle > degrees) {
+    //       System.out.println(angle);
+    //       return true;
+    //   }
+    //   else {
+    //       return false;
+    //   }
 
       /*
       if (angle > degrees) {
