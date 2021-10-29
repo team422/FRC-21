@@ -1,6 +1,8 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
@@ -18,17 +20,10 @@ import frc.robot.RobotMap;
  */
 public class DriveBase extends SubsystemBase {
 
-    public WPI_TalonSRX leftMiddleMaster;
-    public WPI_TalonSRX rightMiddleMaster;
-    public WPI_TalonSRX leftFrontFollowerTalon;
-    public WPI_TalonSRX leftRearFollowerTalon;
-    public WPI_TalonSRX rightFrontFollowerTalon;
-    public WPI_TalonSRX rightRearFollowerTalon;
-    
-    public WPI_VictorSPX leftFrontFollowerVictor;
-    public WPI_VictorSPX leftRearFollowerVictor;
-    public WPI_VictorSPX rightFrontFollowerVictor;
-    public WPI_VictorSPX rightRearFollowerVictor;
+    public WPI_TalonFX leftLeader; //leader = front
+    public WPI_TalonFX rightLeader;
+    public WPI_TalonFX leftFollower; //follower = back
+    public WPI_TalonFX rightFollower;
 
     public ADXRS450_Gyro gyro;
     private SpeedControllerGroup leftSide;
@@ -109,6 +104,15 @@ public class DriveBase extends SubsystemBase {
             this.leftSide = new SpeedControllerGroup(leftMiddleMaster, leftFrontFollowerVictor, leftRearFollowerVictor);
             this.rightSide = new SpeedControllerGroup(rightMiddleMaster, rightFrontFollowerVictor, rightRearFollowerVictor);
 
+        } else if (RobotMap.botName = RobotMap.BotNames.FALCON) {
+            //falcon drivebase (promised but nonexistent as of 10/29/21)
+            this.leftLeader = new WPI_TalonFX(RobotMap.leftLeader);
+            this.rightLeader = new WPI_TalonFX(RobotMap.rightLeader);
+            this.leftFollower = new WPI_TalonFX(RobotMap.leftFollower);
+            this.rightFollower = new WPI_TalonFX(RobotMap.rightFollower);
+
+            this.leftSide = new SpeedControllerGroup(leftLeader, leftFollower);
+            this.rightSide = new SpeedControllerGroup(rightLeader, rightFollower);
         }
 
         // this.gyro = new ADIS16470_IMU();

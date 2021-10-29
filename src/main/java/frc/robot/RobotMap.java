@@ -3,7 +3,7 @@ import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.networktables.*;
 
 /**
- * Ports for motor controllers, caps for spee and rotation, booleans for toggles, and turn direction.
+ * Ports for motor controllers, caps for speed and rotation, booleans for toggles, and turn direction.
  */
 public class RobotMap {
 
@@ -59,7 +59,7 @@ public class RobotMap {
     public static NetworkTableInstance ntinst;
 
     public enum BotNames {
-        COMPETITION, TOASTER, AXIDRIVE, PBOT20
+        COMPETITION, TOASTER, AXIDRIVE, PBOT20, FALCON
     }
 
     public static BotNames botName;
@@ -143,6 +143,27 @@ public class RobotMap {
         rightMiddleMaster = 31;
         rightFrontFollower = 5; 
         rightRearFollower = 4;
+
+        wheelDiameter = 6;
+
+        leftFlywheel = 422;
+        rightFlywheel = 422;
+        intakeMotor = 422;
+        bottomBelt = 422;
+        middleBelt = 422;
+        feederWheel = 422;
+
+        leftClimber = 422;
+        rightClimber = 422;
+
+        intakeExtensionIn = 0;
+        intakeExtensionOut = 1;
+    } else if (bot == BotNames.FALCON){
+        //falcon ot, 4 motors (2 on each side)
+        leftLeader = 422;
+        leftFollower= 422;
+        rightLeader = 422; 
+        rightFollower = 422;
 
         wheelDiameter = 6;
 
