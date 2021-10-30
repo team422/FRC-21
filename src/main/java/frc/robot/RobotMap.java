@@ -165,7 +165,7 @@ public class RobotMap {
         rightLeader = 422; 
         rightFollower = 422;
 
-        wheelDiameter = 6;
+        wheelDiameter = 4;
 
         leftFlywheel = 422;
         rightFlywheel = 422;
