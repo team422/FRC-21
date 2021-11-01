@@ -28,6 +28,12 @@ public class RobotMap {
     public static int rightMiddleMaster;
     public static int rightRearFollower;
 
+    //falcon ports
+    public static int leftLeader;
+    public static int leftFollower;
+    public static int rightLeader;
+    public static int rightFollower;
+
     public static int wheelDiameter;
 
     // Subsystem motor ports
