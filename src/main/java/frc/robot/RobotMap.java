@@ -41,10 +41,10 @@ public class RobotMap {
     public static void setBot(BotNames bot) {
         botName = bot;
         if (bot == BotNames.MECANUM) {
-            rightFront = 2;
-            rightBack = 3;
-            leftFront = 1;
-            leftBack = 4;
+            rightFront = 4;
+            rightBack = 2;
+            leftFront = 3;
+            leftBack = 1;
             wheelDiameter = 4;
         }
     }
