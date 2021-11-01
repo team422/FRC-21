@@ -179,7 +179,8 @@ public class DriveBase extends SubsystemBase {
     }
 
     /**
-     * @return Left side position in ticks.
+     * @return Left side position in ticks. If statement exists because Falcon uses a different motor as leader than 
+     * the other drivebases 
      */
     public double getLeftPosition() {
         if (RobotMap.botName == RobotMap.BotNames.FALCON) {
