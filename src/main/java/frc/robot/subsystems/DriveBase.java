@@ -25,6 +25,18 @@ public class DriveBase extends SubsystemBase {
     public WPI_TalonFX leftFollower; //follower = back
     public WPI_TalonFX rightFollower;
 
+    public WPI_TalonSRX leftMiddleMaster;
+    public WPI_TalonSRX rightMiddleMaster;
+    public WPI_VictorSPX leftFrontFollowerVictor;
+    public WPI_VictorSPX leftRearFollowerVictor;
+    public WPI_VictorSPX rightFrontFollowerVictor;
+    public WPI_VictorSPX rightRearFollowerVictor;
+
+    public WPI_TalonSRX leftFrontFollowerTalon;
+    public WPI_TalonSRX leftRearFollowerTalon;
+    public WPI_TalonSRX rightFrontFollowerTalon;
+    public WPI_TalonSRX rightRearFollowerTalon;
+
     public ADXRS450_Gyro gyro;
     private SpeedControllerGroup leftSide;
     private SpeedControllerGroup rightSide;
@@ -104,7 +116,7 @@ public class DriveBase extends SubsystemBase {
             this.leftSide = new SpeedControllerGroup(leftMiddleMaster, leftFrontFollowerVictor, leftRearFollowerVictor);
             this.rightSide = new SpeedControllerGroup(rightMiddleMaster, rightFrontFollowerVictor, rightRearFollowerVictor);
 
-        } else if (RobotMap.botName = RobotMap.BotNames.FALCON) {
+        } else if (RobotMap.botName == RobotMap.BotNames.FALCON) {
             //falcon drivebase (promised but nonexistent as of 10/29/21)
             this.leftLeader = new WPI_TalonFX(RobotMap.leftLeader);
             this.rightLeader = new WPI_TalonFX(RobotMap.rightLeader);
@@ -118,8 +130,16 @@ public class DriveBase extends SubsystemBase {
         // this.gyro = new ADIS16470_IMU();
         this.gyro = new ADXRS450_Gyro(kGyroPort);
 
-        leftMotorTicks = leftMiddleMaster.getSelectedSensorPosition(0);
-        rightMotorTicks = rightMiddleMaster.getSelectedSensorPosition(0);
+        if (RobotMap.botName == RobotMap.BotNames.FALCON) {
+            leftMotorTicks = leftLeader.getSelectedSensorPosition(0);
+            rightMotorTicks =rightLeader.getSelectedSensorPosition(0);
+        }
+        else {
+            leftMotorTicks = leftMiddleMaster.getSelectedSensorPosition(0);
+            rightMotorTicks = rightMiddleMaster.getSelectedSensorPosition(0);
+        }
+
+       
 
         this.cheesyDrive = new DifferentialDrive(leftSide, rightSide);
     }
@@ -162,14 +182,24 @@ public class DriveBase extends SubsystemBase {
      * @return Left side position in ticks.
      */
     public double getLeftPosition() {
-        return leftMiddleMaster.getSelectedSensorPosition(0) - leftMotorTicks;
+        if (RobotMap.botName == RobotMap.BotNames.FALCON) {
+            return leftLeader.getSelectedSensorPosition(0) - leftMotorTicks;
+        }
+        else {
+         return leftMiddleMaster.getSelectedSensorPosition(0) - leftMotorTicks;
+        }
     }
 
     /**
      * @return Right side position in ticks.
      */
     public double getRightPosition() {
-        return rightMiddleMaster.getSelectedSensorPosition(0) - rightMotorTicks;
+        if (RobotMap.botName == RobotMap.BotNames.FALCON) {
+            return rightLeader.getSelectedSensorPosition(0) - rightMotorTicks;
+        }
+        else {
+         return rightMiddleMaster.getSelectedSensorPosition(0) - rightMotorTicks;
+        }
     }
 
     /**
@@ -183,8 +213,14 @@ public class DriveBase extends SubsystemBase {
      * Resets the reference point used to calculate distance traveled. Does not physically change the encoder value.
      */
     public void zeroEncoderPosition() {
+        if (RobotMap.botName == RobotMap.BotNames.FALCON) {
+            leftMotorTicks = leftLeader.getSelectedSensorPosition(0);
+            rightMotorTicks = rightLeader.getSelectedSensorPosition(0);
+        }
+        else {
         leftMotorTicks = leftMiddleMaster.getSelectedSensorPosition(0);
         rightMotorTicks = rightMiddleMaster.getSelectedSensorPosition(0);
+        }
     }
 
     /**
