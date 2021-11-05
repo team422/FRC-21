@@ -25,17 +25,17 @@ public class ControllerSplitArcadeDrive extends CommandBase {
 
         /* Sets throttle for driveBase to the left stick Y-axis and sets the rotation
         * for driveBase to the right stick X-axis on on the driverXboxController */
-        if (UserInterface.driverController.getRightJoystickY() < -0.1) {
-            speed = -(Math.pow(UserInterface.driverController.getRightJoystickY(), 2));
-        } else if (UserInterface.driverController.getRightJoystickY() > 0.1) {
-            speed = (Math.pow(UserInterface.driverController.getRightJoystickY(), 2));
+        if (UserInterface.driverController.getLeftJoystickY() < -0.1) {
+            speed = -(Math.pow(UserInterface.driverController.getLeftJoystickY(), 2));
+        } else if (UserInterface.driverController.getLeftJoystickY() > 0.1) {
+            speed = (Math.pow(UserInterface.driverController.getLeftJoystickY(), 2));
         } else {
             speed = 0;
         }
-        if (UserInterface.driverController.getLeftJoystickX() < -0.05) {
-            rotation = (Math.pow(UserInterface.driverController.getLeftJoystickX(), 5));
-        } else if (UserInterface.driverController.getLeftJoystickX() > 0.05) {
-            rotation = (Math.pow(UserInterface.driverController.getLeftJoystickX(), 5));
+        if (UserInterface.driverController.getRightJoystickX() < -0.05) {
+            rotation = (Math.pow(UserInterface.driverController.getRightJoystickX(), 5));
+        } else if (UserInterface.driverController.getRightJoystickX() > 0.05) {
+            rotation = (Math.pow(UserInterface.driverController.getRightJoystickX(), 5));
         } else {
             rotation = 0;
         }
@@ -61,6 +61,6 @@ public class ControllerSplitArcadeDrive extends CommandBase {
         // Subsystems.driveBase.cheesyDrive.curvatureDrive(RobotMap.getRotationCap() * rotation, RobotMap.getSpeedCap() * speed, true);
         
         // For Comp Bot, otherwise comment out and uncomment the other one
-        Subsystems.driveBase.cheesyDrive.curvatureDrive(RobotMap.getSpeedCap() * speed, RobotMap.getRotationCap() * rotation, true);
+        Subsystems.driveBase.cheesyDrive.curvatureDrive(RobotMap.getRotationCap() * rotation, RobotMap.getSpeedCap() * speed, true);
     }
 }

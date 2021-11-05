@@ -21,11 +21,11 @@ public class Robot extends TimedRobot {
 
     public void robotInit() {
         //Choose from AXIDRIVE (Axiom drivebase), TOASTER, PBOT20 (42D2), and COMPETITION
-        RobotMap.setBot(RobotMap.BotNames.COMPETITION);
+        RobotMap.setBot(RobotMap.BotNames.PBOT20);
         System.out.println("Initializing" + RobotMap.botName);
 
         //Choose from ControllerTank, ControllerTankFO (Field Oriented extras), JoystickTank, ControllerSplitArcade, ControllerSplitCurvature, and Wii
-        UIMap.setDriveMode(UIMap.DriveMode.Wii);
+        UIMap.setDriveMode(UIMap.DriveMode.ControllerSplitArcade);
         System.out.println("Initializing" + UIMap.driveMode);
 
         //drive settings
