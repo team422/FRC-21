@@ -128,7 +128,7 @@ public class RobotMap {
         leftFrontFollower = 3;
         leftRearFollower = 6;
         rightMiddleMaster = 31;
-        rightFrontFollower = 5; 
+        rightFrontFollower = 35; 
         rightRearFollower = 4;
 
         wheelDiameter = 6;

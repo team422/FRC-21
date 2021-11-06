@@ -99,7 +99,7 @@ public class DriveBase extends SubsystemBase {
             this.rightMiddleMaster = new WPI_TalonSRX(RobotMap.rightMiddleMaster); 
             this.leftFrontFollowerVictor = new WPI_VictorSPX(RobotMap.leftFrontFollower);
             this.leftRearFollowerVictor = new WPI_VictorSPX(RobotMap.leftRearFollower);
-            this.rightFrontFollowerVictor = new WPI_VictorSPX(RobotMap.rightFrontFollower);
+            this.rightFrontFollowerTalon = new WPI_TalonSRX(RobotMap.rightFrontFollower);
             this.rightRearFollowerVictor = new WPI_VictorSPX(RobotMap.rightRearFollower);
 
             leftFrontFollowerVictor.setInverted(true);
@@ -107,7 +107,7 @@ public class DriveBase extends SubsystemBase {
             leftRearFollowerVictor.setInverted(true);
 
             this.leftSide = new SpeedControllerGroup(leftMiddleMaster, leftFrontFollowerVictor, leftRearFollowerVictor);
-            this.rightSide = new SpeedControllerGroup(rightMiddleMaster, rightFrontFollowerVictor, rightRearFollowerVictor);
+            this.rightSide = new SpeedControllerGroup(rightMiddleMaster, rightFrontFollowerTalon, rightRearFollowerVictor);
 
         }
 
