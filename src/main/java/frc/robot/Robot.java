@@ -58,8 +58,6 @@ public class Robot extends TimedRobot {
 
     public void teleopPeriodic() {
 
-        Subsystems.driveBase.setMotors(0.5, 0, 0, 0);
-
         if (UserInterface.driverController.LB.get()){
             new Port().schedule();
         }

@@ -46,7 +46,7 @@ public class MecanumDrive extends CommandBase {
         }
 
         if (UserInterface.driverController.getRightJoystickX() > 0.1||UserInterface.driverController.getRightJoystickX()<0.1){
-            -rot = UserInterface.driverController.getRightJoystickX();
+            rot = UserInterface.driverController.getRightJoystickX();
         } else {
             rot = 0;
         }

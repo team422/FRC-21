@@ -7,8 +7,8 @@ public class RobotMap {
 
     // Robot settings & toggles (mutable)
 
-    private static double speedCap = 0.8;
-    private static double rotationCap = 0.7;
+    private static double speedCap = 1;
+    private static double rotationCap = 1;
 
     public static double sideCount = 0; //note using double because mod doesn't like int for some reason
     public static double trueAngle = 0;
