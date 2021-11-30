@@ -22,6 +22,7 @@ public class SlowFast extends CommandBase {
         RobotMap.setSpeedAndRotationCaps(0.8, 0.7);
         RobotMap.isSpeedMode = true;
       }  
+
     }
 
     public boolean isFinished() {

@@ -10,7 +10,7 @@ public class Vomit extends CommandBase {
 
     public Vomit() {
         setName("Vomit");
-        addRequirements(Subsystems.intake);
+        addRequirements(Subsystems.intake, Subsystems.transversal, Subsystems.flyboi);
     }
 
     public void initialize() {
