@@ -33,21 +33,21 @@ public class Leeds extends SubsystemBase {
         for (int i = 0; i < leedBuffer.getLength(); i++) {
             if (tick % 3 == 0) {
                 if (i % 3 == 0) {
-                    leedBuffer.setRGB(i, 247, 95, 28);
+                    leedBuffer.setRGB(i, 0, 183, 96); // 0 183 96 is Mech Tech Green
                 } else {
-                    leedBuffer.setRGB(i, 128, 0, 128);
+                    leedBuffer.setRGB(i, 0, 112, 60); // 0 112 60 is Dark Green
                 }
             } else if (tick % 3 == 1) {
                 if (i % 3 == 1) {
-                    leedBuffer.setRGB(i, 247, 95, 28);
+                    leedBuffer.setRGB(i, 0, 183, 96);
                 } else {
-                    leedBuffer.setRGB(i, 128, 0, 128);
+                    leedBuffer.setRGB(i, 0, 112, 60);
                 }
             } else {
                 if (i % 3 == 2) {
-                    leedBuffer.setRGB(i, 247, 95, 28);
+                    leedBuffer.setRGB(i, 0, 183, 96);
                 } else {
-                    leedBuffer.setRGB(i, 128, 0, 128);
+                    leedBuffer.setRGB(i, 0, 112, 60);
                 }
             }
         }
