@@ -26,7 +26,7 @@ public class Robot extends TimedRobot {
         System.out.println("Initializing" + RobotMap.botName);
 
         //drive settings
-        Subsystems.driveBase.setDefaultCommand(new TankDrive());
+        Subsystems.driveBase.setDefaultCommand(new ArcadeDrive());
         Subsystems.driveBase.cheesyDrive.setSafetyEnabled(false);
 
         //driver controls (buttons)

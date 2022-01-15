@@ -16,6 +16,6 @@ public class TankDrive extends CommandBase {
     }
 
     public void execute() {
-        Subsystems.driveBase.cheesyDrive.tankDrive(-RobotMap.getSpeedCap()*UserInterface.driverController.getLeftJoystickY(), RobotMap.getSpeedCap()*UserInterface.driverController.getRightJoystickY());
+        Subsystems.driveBase.cheesyDrive.tankDrive(RobotMap.getSpeedCap()*UserInterface.driverController.getLeftJoystickY(), -RobotMap.getSpeedCap()*UserInterface.driverController.getRightJoystickY());
     }
 }
