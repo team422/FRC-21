@@ -9,8 +9,8 @@ public class RobotMap {
 
     // Robot settings & toggles (mutable)
 
-    private static double speedCap = 0.8;
-    private static double rotationCap = 0.7;
+    private static double speedCap = 0.4;
+    private static double rotationCap = 0.3;
 
     public static boolean isSpeedMode = true;
     public static boolean isFirstCamera = true;
@@ -166,10 +166,10 @@ public class RobotMap {
         intakeExtensionOut = 1;
     } else if (bot == BotNames.FALCON){
         //falcon ot, 4 motors (2 on each side)
-        leftLeader = 422;
-        leftFollower= 422;
-        rightLeader = 422; 
-        rightFollower = 422;
+        leftLeader = 4;
+        leftFollower= 2;
+        rightLeader = 3; 
+        rightFollower = 1;
 
         wheelDiameter = 4;
 

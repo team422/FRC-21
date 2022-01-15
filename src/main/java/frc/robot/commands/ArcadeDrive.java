@@ -1,4 +1,11 @@
-public class ControllerSplitArcadeDrive extends CommandBase {
+package frc.robot.commands;
+
+import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.RobotMap;
+import frc.robot.subsystems.Subsystems;
+import frc.robot.userinterface.UserInterface;
+
+public class ArcadeDrive extends CommandBase {
 
     private double updatedSpeed = 0;
     private double updatedRotation = 0;

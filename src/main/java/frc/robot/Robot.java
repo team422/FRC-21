@@ -61,7 +61,8 @@ public class Robot extends TimedRobot {
         // ShuffleboardControl.getAutonomous().schedule();
         // new GalacticSearch().schedule();
         // new DriveStraight(50, 0.5).schedule();
-        new Turn(180, 0.5).schedule();
+        // new Turn(180, 0.5).schedule();
+        new DriveStraight(50, 0.8).schedule();
     }
 
     public void autonomousPeriodic() {
