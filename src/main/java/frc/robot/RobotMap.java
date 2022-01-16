@@ -10,7 +10,7 @@ public class RobotMap {
     // Robot settings & toggles (mutable)
 
     private static double speedCap = 0.4;
-    private static double rotationCap = 0.3;
+    private static double rotationCap = 0.2;
 
     public static boolean isSpeedMode = true;
     public static boolean isFirstCamera = true;
