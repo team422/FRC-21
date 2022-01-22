@@ -9,8 +9,8 @@ public class RobotMap {
 
     // Robot settings & toggles (mutable)
 
-    private static double speedCap = 0.4;
-    private static double rotationCap = 0.2;
+    private static double speedCap = 0.7;
+    private static double rotationCap = 0.5;
 
     public static boolean isSpeedMode = true;
     public static boolean isFirstCamera = true;
@@ -65,7 +65,7 @@ public class RobotMap {
     public static NetworkTableInstance ntinst;
 
     public enum BotNames {
-        COMPETITION, TOASTER, AXIDRIVE, PBOT20, FALCON
+        COMPETITION, TOASTER, AXIDRIVE, PBOT20, FALCON, ANTIMECANUM
     }
 
     public static BotNames botName;
@@ -165,13 +165,34 @@ public class RobotMap {
         intakeExtensionIn = 0;
         intakeExtensionOut = 1;
     } else if (bot == BotNames.FALCON){
-        //falcon ot, 4 motors (2 on each side)
+        //falcon ot, 4 motors (2 on each side)        
         leftLeader = 4;
         leftFollower= 2;
         rightLeader = 3; 
         rightFollower = 1;
 
         wheelDiameter = 4;
+
+        leftFlywheel = 422;
+        rightFlywheel = 422;
+        intakeMotor = 422;
+        bottomBelt = 422;
+        middleBelt = 422;
+        feederWheel = 422;
+
+        leftClimber = 422;
+        rightClimber = 422;
+
+        intakeExtensionIn = 0;
+        intakeExtensionOut = 1;
+    } else if (bot == BotNames.ANTIMECANUM) {
+      
+        leftLeader = 3;
+        leftFollower= 1;
+        rightLeader = 4; 
+        rightFollower = 2;
+
+        wheelDiameter = 6;
 
         leftFlywheel = 422;
         rightFlywheel = 422;

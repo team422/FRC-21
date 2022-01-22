@@ -125,7 +125,17 @@ public class DriveBase extends SubsystemBase {
 
             this.leftSide = new SpeedControllerGroup(leftLeader, leftFollower);
             this.rightSide = new SpeedControllerGroup(rightLeader, rightFollower);
+        } else if (RobotMap.botName == RobotMap.BotNames.ANTIMECANUM) {
+            //this is mecanum without mecanum wheels
+            this.leftLeader = new WPI_TalonFX(RobotMap.leftLeader);
+            this.rightLeader = new WPI_TalonFX(RobotMap.rightLeader);
+            this.leftFollower = new WPI_TalonFX(RobotMap.leftFollower);
+            this.rightFollower = new WPI_TalonFX(RobotMap.rightFollower);
+
+            this.leftSide = new SpeedControllerGroup(leftLeader, leftFollower);
+            this.rightSide = new SpeedControllerGroup(rightLeader, rightFollower);
         }
+
 
         // this.gyro = new ADIS16470_IMU();
         this.gyro = new ADXRS450_Gyro(kGyroPort);
