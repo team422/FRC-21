@@ -16,10 +16,10 @@ public class SlowFast extends CommandBase {
 
     public void initialize() { // Checks to see if the robot is in fast mode
       if (RobotMap.isSpeedMode) { // Checking if the robot is set to speed mode
-        RobotMap.setSpeedAndRotationCaps(0.4, 0.2);
+        RobotMap.setSpeedAndRotationCaps(RobotMap.slowSpeedCap, RobotMap.slowRotCap);
         RobotMap.isSpeedMode = false;
       } else { // if it is not then return to slow mode
-        RobotMap.setSpeedAndRotationCaps(0.7, 0.5);
+        RobotMap.setSpeedAndRotationCaps(RobotMap.fastSpeedCap, RobotMap.fastRotCap);
         RobotMap.isSpeedMode = true;
       }  
     }

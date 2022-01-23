@@ -140,7 +140,7 @@ public class DriveBase extends SubsystemBase {
         // this.gyro = new ADIS16470_IMU();
         this.gyro = new ADXRS450_Gyro(kGyroPort);
 
-        if (RobotMap.botName == RobotMap.BotNames.FALCON) {
+        if (RobotMap.botName == RobotMap.BotNames.FALCON||RobotMap.botName == RobotMap.botName.ANTIMECANUM) {
             leftMotorTicks = leftLeader.getSelectedSensorPosition(0);
             rightMotorTicks =rightLeader.getSelectedSensorPosition(0);
         }
@@ -193,7 +193,7 @@ public class DriveBase extends SubsystemBase {
      * the other drivebases 
      */
     public double getLeftPosition() {
-        if (RobotMap.botName == RobotMap.BotNames.FALCON) {
+        if (RobotMap.botName == RobotMap.BotNames.FALCON||RobotMap.botName == RobotMap.botName.ANTIMECANUM) {
             return leftLeader.getSelectedSensorPosition(0) - leftMotorTicks;
         }
         else {
@@ -205,7 +205,7 @@ public class DriveBase extends SubsystemBase {
      * @return Right side position in ticks.
      */
     public double getRightPosition() {
-        if (RobotMap.botName == RobotMap.BotNames.FALCON) {
+        if (RobotMap.botName == RobotMap.BotNames.FALCON||RobotMap.botName == RobotMap.botName.ANTIMECANUM) {
             return rightLeader.getSelectedSensorPosition(0) - rightMotorTicks;
         }
         else {
@@ -224,7 +224,7 @@ public class DriveBase extends SubsystemBase {
      * Resets the reference point used to calculate distance traveled. Does not physically change the encoder value.
      */
     public void zeroEncoderPosition() {
-        if (RobotMap.botName == RobotMap.BotNames.FALCON) {
+        if (RobotMap.botName == RobotMap.BotNames.FALCON||RobotMap.botName == RobotMap.botName.ANTIMECANUM) {
             leftMotorTicks = leftLeader.getSelectedSensorPosition(0);
             rightMotorTicks = rightLeader.getSelectedSensorPosition(0);
         }

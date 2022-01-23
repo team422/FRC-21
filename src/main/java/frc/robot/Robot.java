@@ -31,6 +31,9 @@ public class Robot extends TimedRobot {
 
         //driver controls (buttons)
         UserInterface.driverController.RB.whenPressed(new SlowFast());
+        UserInterface.driverController.LB.whenPressed(new HoldFast());
+        UserInterface.driverController.LB.whenReleased(new ReleaseSlow());
+
 
         //operator controls (buttons)
         UserInterface.operatorController.LB.whileHeld(new Vomit());
@@ -55,14 +58,6 @@ public class Robot extends TimedRobot {
     public void autonomousInit() {
         System.out.println("Autonomous Initalized");
         CommandScheduler.getInstance().cancelAll();
-
-        // Schedule autonomous command to run
-        // ShuffleboardControl.setAutonomous();
-        // ShuffleboardControl.getAutonomous().schedule();
-        // new GalacticSearch().schedule();
-        // new DriveStraight(50, 0.5).schedule();
-        // new Turn(180, 0.5).schedule();
-        new DriveStraight(50, 0.8).schedule();
     }
 
     public void autonomousPeriodic() {
